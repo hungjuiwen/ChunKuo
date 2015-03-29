@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "管理者登入";
+}
+<h2>管理者登入</h2>
+@using (Html.BeginForm("Upload", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        帳號：<input type="text" namd="acc" id="acc" class="form-control" />
+        密碼：<input type="password" acc" id="acc" class="form-control" />
+        <input type="submit" name="btn" id="btn" class="btn-primary" />
+    </fieldset>
+}
