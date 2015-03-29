@@ -1,10 +1,10 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - 登入22</title>
+    <title>@ViewBag.Title - 登入</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -17,25 +17,38 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("應用程式名稱", "Index", "Home", null, new { @class = "navbar-brand" })
+                @Html.ActionLink("全國汽車旅館", "Index", "Home", null, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("首頁", "Index", "Home")</li>
-                    <li>@Html.ActionLink("關於", "About", "Home")</li>
-                    <li>@Html.ActionLink("連絡方式", "Contact", "Home")</li>
-                </ul>
-            </div>
+            @if (Session["admin"] == null)
+            {
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("房間介紹", "Index", "Home")</li>
+                        <li>@Html.ActionLink("關於", "About", "Home")</li>
+                        <li>@Html.ActionLink("連絡方式", "Contact", "Home")</li>
+                    </ul>
+                </div>
+            }
+            else
+            {
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("房間介紹", "Index", "Home")</li>
+                        <li>@Html.ActionLink("關於", "About", "Home")</li>
+                        <li>@Html.ActionLink("連絡方式", "Contact", "Home")</li>
+                    </ul>
+                </div>
+            }
+
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - 我的 ASP.NET 應用程式</p>
+            <p>&copy; @DateTime.Now.Year - 全國汽車旅館     @Html.ActionLink("管理者登入", "login", "home")</p>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
